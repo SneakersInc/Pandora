@@ -1,0 +1,60 @@
+{% include "partials/header.html" %}
+<div class="top-buffer"></div>
+<div class="container">
+<div class="row">
+    <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Upload Maltego Graph</h3>
+                    </div>
+    <div class="panel-body">
+    <form class="navbar-form navbar-left" role="form" action="/upload" enctype="multipart/form-data" method="post" name="submit" target="_self">
+
+    <div class="form-group">
+        <input type="file" class="filestyle" data-buttonBefore="true" name="file" multiple>
+        </div>
+        <button type="submit" id="bButton" data-loading-text="Uploading..." class="btn btn-success">Upload</button>
+      </form>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">List of exported graphs</h3>
+                </div>
+        <div class="panel-body">
+            {% block content %}
+                <table data-toggle="table"
+                data-search="true"
+                data-show-refresh="true"
+                data-show-toggle="true"
+                data-show-columns="true"
+                data-classes="table table-hover table-condensed"
+                data-striped="true"
+                data-pagination="true"
+                >
+                <thead>
+                    <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Created</th>
+                   </tr>
+               </thead>
+               <tbody>
+               {% for s in list %}
+               <tr>
+                <td class="text-center"><a href="/graph/{{ s[0] }}">{{ s[0] }}</a></td>
+                <td class="text-center">{{ s[1] }}</td>
+                </tr>
+            {% endfor %}
+    </tbody>
+   </table>
+
+            {% endblock %}
+        </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+{% include "partials/footer.html" %}

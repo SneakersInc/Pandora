@@ -1,0 +1,48 @@
+{% include "partials/header.html" %}
+<div class="top-buffer"></div>
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Entity Information - {{ filename }}</h3>
+        </div>
+    <div class="panel-body">
+    {% block content %}
+        <table
+                data-toggle="table"
+                    data-search="true"
+                    data-show-export="true"
+                    data-show-refresh="true"
+                    data-show-toggle="true"
+                    data-show-columns="true"
+                    data-classes="table table-hover table-condensed"
+                    data-show-pagination-switch="true"
+                    data-pagination="true"
+                >
+                <thead>
+                    <tr>
+                    <th class="text-center">Entity Type</th>
+                    <th class="text-center">Data</th>
+                    <th class="text-center">Incoming Links</th>
+                    <th class="text-center">Outgoing Links</th>
+                   </tr>
+               </thead>
+               <tbody>
+               {% for i in output %}
+                       <tr>
+                        <td class="text-center">{{ i['EntityType'] }}</td>
+                        <td class="text-center">{{ i['Data']|wordwrap }}</td>
+                        <td class="text-center"><a href="#" target="popup" onclick="window.open('/graph/{{ filename }}/incoming/{{ i['NodeID'] }}','popup','width=900,height=900'); return false;">{{ i['Links']['Incoming']|length}}</a></td>
+                        <td class="text-center"><a href="#" target="popup" onclick="window.open('/graph/{{ filename }}/outgoing/{{ i['NodeID'] }}','popup','width=900,height=900'); return false;">{{ i['Links']['Outgoing']|length}}</a></td>
+                        </tr>
+               {% endfor %}
+    </tbody>
+   </table>
+</div>
+</div>
+</div>
+    {% endblock %}
+
+
+{% include "partials/footer.html" %}

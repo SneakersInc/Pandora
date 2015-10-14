@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pandora - Maltego Graph Exporter</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-table.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}">
+    <div class="container">
+    <div class="top-buffer"></div>
+    <div class="container">
+    <div class="row">
+    <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ direction }} Links - {{ nodeid }}</h3>
+                    </div>
+    <div class="panel-body">
+    <table
+                data-toggle="table"
+                    data-search="true"
+                    data-show-export="true"
+                    data-show-refresh="true"
+                    data-show-toggle="true"
+                    data-show-columns="true"
+                    data-classes="table table-hover table-condensed"
+                    data-show-pagination-switch="true"
+                    data-pagination="true"
+                >
+                <thead>
+                    <tr>
+                    <th class="text-center">Entity Type</th>
+                    <th class="text-center">Data</th>
+                   </tr>
+               </thead>
+               <tbody>
+               {% for r in records %}
+                       <tr>
+                        <td class="text-center">{{ r[0] }}</td>
+                        <td class="text-center">{{ r[1]|wordwrap }}</td>
+                        </tr>
+               {% endfor %}
+    </tbody>
+   </table>
+    </div>
+    </div>
+    </div>
+
+
+    </div>
+        <script src="{{ url_for('static', filename='js/jquery-1.11.2.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-table.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-filestyle.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-table-export.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/tableExport.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#sButton').click(function(){
+                      var btn = $(this);
+                      btn.button('loading');
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                $('#bButton').click(function(){
+                      var btn = $(this);
+                      btn.button('loading');
+                });
+            });
+        </script>
+    <div class="footer">
+            <div class="container">
+                <div class="text-center">
+                    <p class="muted credit">Web Interface for <a href="http://www.sneakersinc.net">Pandora</a>
+                        Created by <a href="http://itgeekchronicles.co.uk" target="_blank">Adam Maxwell</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>
+
+
+
+

@@ -1,0 +1,35 @@
+ </div>
+        <script src="{{ url_for('static', filename='js/jquery-1.11.2.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-table.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-filestyle.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap-table-export.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/tableExport.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#sButton').click(function(){
+                      var btn = $(this);
+                      btn.button('loading');
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                $('#bButton').click(function(){
+                      var btn = $(this);
+                      btn.button('loading');
+                });
+            });
+        </script>
+    <div class="footer">
+            <div class="container">
+                <div class="text-center">
+                    <p class="muted credit">Web Interface for <a href="http://www.sneakersinc.net">Pandora</a>
+                        Created by <a href="http://itgeekchronicles.co.uk" target="_blank">Adam Maxwell</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>
